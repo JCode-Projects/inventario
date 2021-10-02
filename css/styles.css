@@ -1,0 +1,32 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 31px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+.form-group input {
+    font-size: 18px;
+}
+
+button.btn-success {
+    color: var(--bs-light);
+    font-weight: bold;
+}
+
+.icon-style {
+    text-align: center;
+    color: var(--bs-gray);    
+}
+
+.icon-style em {
+    font-size: 150px;
+}

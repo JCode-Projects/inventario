@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>fase3</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allan&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="/css/simple-footer.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md bounce animated navigation-clean">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="font-family: Allan, serif;color: var(--bs-info);font-size: 28px;">PC Electronics</a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+                <span class="visually-hidden">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Administrador</a>
+                        <div class="dropdown-menu"></div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Inventario</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Registrar</a>
+                            <a class="dropdown-item" href="#">Actualizar</a>
+                            <a class="dropdown-item" href="#">Eliminar</a>
+                            <a class="dropdown-item" href="#">Consultar</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Utilidades</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Utilidades</a>
+                            <a class="dropdown-item" href="#">Conversión</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><small></small>
+                <h1>Calculadora</h1>
+                <p>Con ésta calculadora podrás calcular el valor total del producto teniendo en cuenta el valor de impuesto (IVA) y utilidad esperada.</p>
+                <div id="error-fields"></div>
+                <form action="#">
+                    <div class="form-group mb-3">
+                        <label class="form-label">Valor de compra:</label>
+                        <input class="form-control" id="purchase-value" type="number" placeholder="ejm. 12500">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Utilidad o ganancia:</label>
+                        <input class="form-control" id="utilities" type="number" placeholder="ejm. 5%">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">IVA:</label>
+                        <input class="form-control" id="iva" type="number" placeholder="ejm. 19%">
+                    </div>
+                    <button class="btn btn-success" id="calculate" type="submit">Calcular</button>
+                </form>
+            </div>
+            <div id="column-result" class="col-md-6">
+                <div class="border rounded" style="padding: 5px;">
+                    <h1>Realiza tú primer cálculo</h1>
+                    <p class="icon-style">
+                        <em class="fa fa-question-circle-o icon-style"></em>
+                    </p>
+                    <p class="text-center">Para comenzar llena el formulario con todos los campos solicitados, una vez estés seguro da click en el botón "Calcular".</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bounce animated footer-2 mt-5 pt-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-8 col-sm-6 col-md-6">
+                    <p class="text-start mt-3 mb-3">© 2021 Programación Web</p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6">
+                    <p class="text-start mt-3 mb-3">Universidad Nacional Abierta y a Distancia</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bs-init.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+
+</html>
