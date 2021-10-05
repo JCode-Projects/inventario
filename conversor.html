@@ -7,23 +7,43 @@
     <title>fase3-2</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allan&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="/css/simple-footer.css">
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md bounce animated navigation-clean">
-        <div class="container"><a class="navbar-brand" href="#" style="font-family: Allan, serif;color: var(--bs-info);font-size: 28px;">PC Electronics</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container">
+            <a class="navbar-brand" href="#" style="font-family: Allan, serif;color: var(--bs-info);font-size: 28px;">PC Electronics</a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+                <span class="visually-hidden">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Administrador</a>
-                        <div class="dropdown-menu" style="font-size: 18px;"></div>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Administrador</a>
+                        <div class="dropdown-menu"></div>
                     </li>
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Inventario</a>
-                        <div class="dropdown-menu" style="font-size: 18px;"><a class="dropdown-item" href="#">Registrar</a><a class="dropdown-item" href="#">Actualizar</a><a class="dropdown-item" href="#">Eliminar</a><a class="dropdown-item" href="#">Consultar</a></div>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Inventario</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Registrar</a>
+                            <a class="dropdown-item" href="#">Actualizar</a>
+                            <a class="dropdown-item" href="#">Eliminar</a>
+                            <a class="dropdown-item" href="#">Consultar</a>
+                        </div>
                     </li>
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Utilidades</a>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Utilidades</a><a class="dropdown-item" href="#">Conversión</a></div>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Utilidades</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Utilidades</a>
+                            <a class="dropdown-item" href="#">Conversión</a>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -34,62 +54,64 @@
             <div class="col-md-6">
                 <h1 style="text-align: center;">Conversor de Unidades</h1>
                 <p>Con ésta calculadora puedes hacer conversiones de unidades de almacenamiento, puedes convertir entre byte, kilobyte, megabyte, gigabyte, terabyte.</p>
-                <div class="alert alert-danger" role="alert"><span><strong>Digita la cantidad y selecciona una unidad.</strong></span></div>
-                <form>
-                    <div class="form-group mb-3"><label class="form-label">Cantidad de almacenamiento:</label><input class="form-control" type="number" placeholder="ejm. 5%"></div>
-                    <div class="d-flex flex-grow-0 justify-content-between align-items-lg-center"><select class="form-select">
+                <div id="error-fields"></div>
+                <form action="#">
+                    <div class="form-group mb-3">
+                        <label class="form-label">Cantidad de almacenamiento:</label>
+                        <input class="form-control" id="stored" type="number" placeholder="ejm. 4MB">
+                    </div>
+                    <div class="d-flex flex-grow-0 justify-content-between align-items-lg-center">
+                        <select class="form-select" id="initial-state">
                             <optgroup label="Unidades de almacenamiento">
-                                <option value="NN" selected="">Seleccione una opción</option>
+                                <option value="NN" selected disabled>Seleccione una opción</option>
                                 <option value="B">Byte</option>
                                 <option value="KB">KiloByte</option>
                                 <option value="MB">MegaByte</option>
                                 <option value="GB">GigaByte</option>
                                 <option value="TB">TeraByte</option>
                             </optgroup>
-                        </select><i class="fa fa-long-arrow-right" style="font-size: 31px;color: var(--bs-gray);margin-right: 5px;margin-left: 5px;"></i><select class="form-select">
+                        </select>
+                        <em class="fa fa-long-arrow-right" style="font-size: 31px;color: var(--bs-gray);margin: 0 10px;"></em>
+                        <select class="form-select" id="final-state">
                             <optgroup label="Unidades de almacenamiento">
-                                <option value="NN" selected="">Seleccione una opción</option>
+                                <option value="NN" selected disabled>Seleccione una opción</option>
                                 <option value="B">Byte</option>
                                 <option value="KB">KiloByte</option>
                                 <option value="MB">MegaByte</option>
                                 <option value="GB">GigaByte</option>
                                 <option value="TB">TeraByte</option>
                             </optgroup>
-                        </select></div><button class="btn btn-success" type="submit" style="color: var(--bs-light);font-family: Montserrat, sans-serif;font-size: 18px;font-weight: bold;margin-top: 20px;">Calcular</button>
+                        </select>
+                    </div>
+                    <button id="calculate" class="btn btn-success mt-4" type="submit">Calcular</button>
                 </form>
             </div>
-            <div class="col-md-6">
+            <div id="column-result" class="col-md-6">
                 <div class="border rounded" style="padding: 5px;">
                     <h1 style="text-align: center;">Realiza tú primer cálculo</h1>
-                    <p style="text-align: center;color: var(--bs-gray);"><i class="fa fa-question-circle-o" style="font-size: 150px;text-align: center;"></i></p>
+                    <p style="text-align: center;color: var(--bs-gray);">
+                        <em class="fa fa-question-circle-o" style="font-size: 150px;text-align: center;"></em>
+                    </p>
                     <p style="text-align: center;">Para comenzar llena el formulario y selecciona las unidades a convertir, una vez estés seguro da click en el botón "Calcular".</p>
-                </div>
-                <div class="border rounded border-success" style="padding: 5px;">
-                    <h1 style="text-align: center;">Resultados</h1>
-                    <p style="text-align: center;color: var(--bs-gray);"><i class="fa fa-check" style="font-size: 150px;text-align: center;background: var(--bs-white);color: var(--bs-green);"></i></p>
-                    <p style="text-align: center;">A continuación encontrará los resultados del calculo realizado:</p>
-                    <div class="d-flex justify-content-xl-center align-items-xl-center">
-                        <p>####</p><i class="fa fa-long-arrow-right" style="font-size: 31px;color: var(--bs-gray);margin-right: 15px;margin-left: 15px;"></i>
-                        <p>####</p>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="bounce animated footer-2" style="margin-top: 30px;font-size: 19px;font-family: Montserrat, sans-serif;padding-top: 4px;padding-bottom: 11px;background: var(--bs-dark);color: var(--bs-white);">
+    <div class="bounce animated footer-2 mt-5 pt-2">
         <div class="container">
             <div class="row">
                 <div class="col-8 col-sm-6 col-md-6">
-                    <p class="text-start" style="margin-top:5%;margin-bottom:3%;">© 2021 Programación Web</p>
+                    <p class="text-start mt-3 mb-3">© 2021 Programación Web</p>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6">
-                    <p style="margin-top:5%;margin-bottom:8%;font-size:1em;">Universidad Nacional Abierta y a Distancia</p>
+                    <p class="text-start mt-3 mb-3">Universidad Nacional Abierta y a Distancia</p>
                 </div>
             </div>
         </div>
     </div>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/bs-init.js"></script>
+    <script src="/js/app-2.js"></script>
 </body>
 
 </html>
