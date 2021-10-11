@@ -85,7 +85,7 @@ class ConvertData {
             <p class="text-center" style="color: var(--bs-gray);">
                 <em class="fa fa-check" style="font-size: 150px;background: var(--bs-white);color: var(--bs-green);"></em>
             </p>
-            <p class="text-center">A continuación encontrará los resultados de la coversión:</p>
+            <p class="text-center">A continuación encontrará los resultados de la conversión:</p>
             <div class="d-flex justify-content-center align-items-xl-center">
                 <p class="mb-0">${valueConvert} ${initialTypeLabel}</p>
                 <em class="fa fa-long-arrow-right" style="font-size: 31px;color: var(--bs-gray); margin: 0 10px;"></em>
