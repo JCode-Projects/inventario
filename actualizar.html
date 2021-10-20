@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Inventario - Inicio</title>
+    <title>Actualizar Producto</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="fonts/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allan&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
-    <link rel="stylesheet" href="fonts/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="css/Navigation-Clean.css">
     <link rel="stylesheet" href="css/simple-footer.css">
@@ -50,9 +50,42 @@
         </div>
     </nav>
     <main>
-        <!-- Struct -->
+        <h1 class="text-center mb-5">Actualización de producto</h1>
+        <form>
+            <div class="col">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label class="form-label">Código del producto:</label>
+                                <input type="number" class="form-control" placeholder="ejm. 2090" style="border-radius: 5px;" />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Marca del producto:</label>
+                                <input type="text" class="form-control" placeholder="ejm. Inside" style="border-radius: 5px;" />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Cantidad comprada:</label>
+                                <input type="number" class="form-control" placeholder="ejm. 15" style="border-radius: 5px;" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group mb-3">
+                                <label class="form-label">Nombre del producto:</label>
+                                <input type="text" class="form-control" placeholder="ejm. Mouse" style="border-radius: 5px;" />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Precio de compra:</label>
+                                <input type="number" class="form-control" placeholder="ejm. 24000" style="border-radius: 5px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit" style="border-width: 0px;border-radius: 9px;padding: 9px 19.2px;">Registrar Producto</button>
+                </div>
+            </div>
+        </form>
     </main>
-    <footer class="bounce animated footer-2 mt-5 pt-2">
+    <div class="bounce animated footer-2 mt-5 pt-2">
         <div class="container">
             <div class="row">
                 <div class="col-8 col-sm-6 col-md-6">
@@ -63,8 +96,10 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bs-init.js"></script>
+    <script src="js/main.js" type="module"></script>
 </body>
+
 </html>
