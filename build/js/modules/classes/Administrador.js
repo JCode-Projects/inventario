@@ -30,7 +30,7 @@ export default class Administrador {
             Swal.fire({
                 icon: 'error',
                 title: 'Ha ocurrido un error',
-                text: 'No se pudo crear la base de datos, verifica la conexión a la base de datos.',
+                text: 'No se pudo crear la base de datos, verifica la conexión con MySQL.',
             });
         }
     }

@@ -19,6 +19,8 @@ export default class Producto {
 
                 if(data.metodo == 'DELETE') {
                     this.deleteProducto(data);
+                } else if(data.metodo == 'GET') {
+                    this.getProducto(data);
                 }
             });
         }
@@ -42,6 +44,28 @@ export default class Producto {
         }
     }
 
+    async getProducto(data) {
+        let dataForm = new FormData();
+        Object.keys(data).forEach(key => {
+            dataForm.append(key, data[key]);
+        });
+
+        try {
+            let response = await fetch('./api/producto.php', {
+                method: 'POST',
+                body: dataForm
+            });
+            let result = await response.json();
+
+            console.log(result);
+        } catch(error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Ha ocurrido un error',
+                text: 'Verifica la conexión con la base de datos y vuelve a intentar.',
+            });
+        }
+    }
 
     async insertProducto(data) {
         let dataForm = new FormData();

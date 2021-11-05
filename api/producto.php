@@ -39,7 +39,29 @@
             )));
         }
 
-        if($metodo == 'POST') {
+        if($metodo == 'GET') {
+            $db = getConnectionDB();
+
+            $stmt = $db -> prepare('SELECT * FROM tabla45 WHERE codigo_prod = ?;');
+            $stmt -> bind_param('i', $codigo_prod);
+
+            $execute = $stmt -> execute();
+
+            if(!$execute) {
+                die(json_encode(array(
+                    'error' => 'error',
+                    'mensaje' => "No existe un producto con el código '$codigo_prod'."
+                )));
+            }
+
+            $result = $stmt -> get_result() -> fetch_assoc();
+
+            die(json_encode(array(
+                'error' => false,
+                'mensaje' => "Información del producto con el código '$codigo_prod' obtenida.",
+                'info' => $result
+            )));
+        } else if($metodo == 'POST') {
             $db = getConnectionDB();
 
             $stmt = $db -> prepare("INSERT INTO tabla45 (codigo_prod, nombre_prod, marca_prod, precio_compra_prod, cantidad_comprada_prod) VALUES (?, ?, ?, ?, ?);");
@@ -50,7 +72,7 @@
 
             if(!$result){
                 die(json_encode(array(
-                    'error' => 'error',
+                    'error' => true,
                     'mensaje' => "Ya existe un producto con el código '$codigo_prod'."
                 )));
             }
@@ -71,7 +93,7 @@
 
             if($stmt -> affected_rows < 1) {
                 die(json_encode(array(
-                    'error' => 'error',
+                    'error' => true,
                     'mensaje' => "No existe un producto con el código '$codigo_prod'."
                 )));
             }
