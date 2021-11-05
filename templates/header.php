@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Inventario - Inicio</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Inventario Productos || PSW</title>
+    <link rel="stylesheet" href="build/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allan&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap">
-    <link rel="stylesheet" href="fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="build/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="css/Navigation-Clean.css">
-    <link rel="stylesheet" href="css/simple-footer.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="build/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="build/css/simple-footer.css">
+    <link rel="stylesheet" href="build/css/styles.css">
 </head>
-
 <body>
     <nav class="navbar navbar-light navbar-expand-md bounce animated navigation-clean">
         <div class="container">
@@ -27,44 +25,30 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Administrador</a>
-                        <div class="dropdown-menu"></div>
+                        <div class="dropdown-menu">
+                            <a id="create-db" class="dropdown-item" href="./api/config/crear_db.php">Crear Base de Datos</a>
+                            <a id="create-table" class="dropdown-item" href="./api/config/crear_tabla.php">Crear Tabla</a>
+                            <a class="dropdown-item" href="">Generar Reporte PDF</a>
+                            <a class="dropdown-item" href="">Generar Backup</a>
+                        </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Inventario</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="registrar.html">Registrar</a>
-                            <a class="dropdown-item" href="actualizar.html">Actualizar</a>
-                            <a class="dropdown-item" href="eliminar.html">Eliminar</a>
-                            <a class="dropdown-item" href="consultar.html">Consultar</a>
+                            <a class="dropdown-item" href="./registrar.php">Registrar</a>
+                            <a class="dropdown-item" href="./actualizar.php">Actualizar</a>
+                            <a class="dropdown-item" href="./eliminar.php">Eliminar</a>
+                            <a class="dropdown-item" href="./consultar.php">Consultar</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Utilidades</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="calculadora.html">Utilidades</a>
-                            <a class="dropdown-item" href="conversor.html">Conversión</a>
+                            <a class="dropdown-item" href="./calculadora.php">Utilidades</a>
+                            <a class="dropdown-item" href="./conversor.php">Conversión</a>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <main>
-        <!-- Struct -->
-    </main>
-    <footer class="bounce animated footer-2 mt-5 pt-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-8 col-sm-6 col-md-6">
-                    <p class="text-start mt-3 mb-3">© 2021 Programación Web</p>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6">
-                    <p class="text-start mt-3 mb-3">Universidad Nacional Abierta y a Distancia</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bs-init.js"></script>
-</body>
-</html>
