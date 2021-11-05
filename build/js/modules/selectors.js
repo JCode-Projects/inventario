@@ -26,3 +26,5 @@ export const txtMetodo = formData ? formData.querySelector('input[name="metodo"]
 export const formElement = document.querySelector('#form-item');
 export const txtCodigoProdItem = formElement ? formElement.querySelector('input[name="codigo_prod"]') : undefined;
 export const txtMetodoItem = formElement ? formElement.querySelector('input[name="metodo"]') : undefined;
+
+export const infoProdContainer = document.querySelector('#info-prod');

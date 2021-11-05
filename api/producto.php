@@ -6,7 +6,7 @@
         if (empty($codigo_prod)) {
             $errores[] = 'El codigo del producto es obligatorio';
         }
-        if($metodo != 'DELETE') {
+        if($metodo != 'DELETE' || $metodo != 'GET') {
             if (empty($nombre_prod)) {
                 $errores[] = 'El nombre del producto es obligatorio';
             }

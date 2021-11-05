@@ -1,4 +1,4 @@
-import { formData, formElement, txtCodigoProd, txtNombreProd, txtMarcaProd, txtPrecioCompraProd, txtCantidadCompradaProd, txtMetodo, txtCodigoProdItem, txtMetodoItem } from '../selectors.js'
+import { infoProdContainer, formData, formElement, txtCodigoProd, txtNombreProd, txtMarcaProd, txtPrecioCompraProd, txtCantidadCompradaProd, txtMetodo, txtCodigoProdItem, txtMetodoItem } from '../selectors.js'
 export default class Producto {
     constructor() {
         if(formData) {
@@ -56,6 +56,17 @@ export default class Producto {
                 body: dataForm
             });
             let result = await response.json();
+
+            if(!result.error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'No se pudo obtener el producto',
+                    text: result.mensaje
+                }); 
+                return;
+            }
+
+
 
             console.log(result);
         } catch(error) {
@@ -143,5 +154,27 @@ export default class Producto {
                 text: 'Verifica la conexión con la base de datos y vuelve a intentar.',
             });
         }
+    }
+
+    showProductoHTML(data) {
+        let { codigo_prod, nombre_prod, marca_prod, precio_compra_prod, cantidad_comprada_prod } = data;
+
+        let card = document.createElement('div');
+        card.classList.add('card');
+        card.innerHTML = `
+            <div class="card-body">
+                <h5 class="card-title">${nombre_prod}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Código: ${codigo_prod}</h6>
+                <p class="card-text"><strong>Marca del producto:</strong> ${marca_prod}</p>
+                <p class="card-text"><strong>Cantidad comprada:</strong> ${cantidad_comprada_prod} unidades</p>
+                <p class="card-text"><strong>Precio de compra:</strong> $${precio_compra_prod}</p>
+            </div>
+        `;
+
+        while(infoProdContainer.firstChild) {
+            infoProdContainer.removeChild(infoProdContainer.firstChild);
+        }
+        
+        infoProdContainer.appendChild(card);
     }
 }

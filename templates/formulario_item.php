@@ -15,6 +15,9 @@
                         <input type="number" name="codigo_prod" class="form-control" placeholder="ejm. 2090" style="border-radius: 5px;" />
                     </div>
                 </div>
+                <div class="col-md-6" id="info-prod">
+
+                </div>
             </div>
             <button class="btn <?php echo $clase_btn; ?>" type="submit"><?php echo $texto_btn; ?></button>
             <input type="hidden" name="metodo" value="<?php echo $metodo ?>">
