@@ -6,7 +6,7 @@
         if (empty($codigo_prod)) {
             $errores[] = 'El codigo del producto es obligatorio';
         }
-        if($metodo != 'DELETE' || $metodo != 'GET') {
+        if($metodo != 'DELETE' && $metodo != 'GET') {
             if (empty($nombre_prod)) {
                 $errores[] = 'El nombre del producto es obligatorio';
             }
@@ -45,16 +45,16 @@
             $stmt = $db -> prepare('SELECT * FROM tabla45 WHERE codigo_prod = ?;');
             $stmt -> bind_param('i', $codigo_prod);
 
-            $execute = $stmt -> execute();
+            $stmt -> execute();
 
-            if(!$execute) {
+            $result = $stmt -> get_result() -> fetch_assoc();
+
+            if(!$result) {
                 die(json_encode(array(
-                    'error' => 'error',
+                    'error' => true,
                     'mensaje' => "No existe un producto con el código '$codigo_prod'."
                 )));
             }
-
-            $result = $stmt -> get_result() -> fetch_assoc();
 
             die(json_encode(array(
                 'error' => false,

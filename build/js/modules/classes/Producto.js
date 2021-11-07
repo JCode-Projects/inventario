@@ -57,18 +57,19 @@ export default class Producto {
             });
             let result = await response.json();
 
-            if(!result.error) {
+            if(result.error) {
                 Swal.fire({
                     icon: 'error',
                     title: 'No se pudo obtener el producto',
                     text: result.mensaje
                 }); 
+                
+                this.clearResultado();
+                
                 return;
             }
 
-
-
-            console.log(result);
+            this.showProductoHTML(result.info);
         } catch(error) {
             Swal.fire({
                 icon: 'error',
@@ -123,37 +124,50 @@ export default class Producto {
             dataForm.append(key, data[key]);
         });
 
-        try {
-            let response = await fetch('./api/producto.php', {
-                method: 'POST',
-                body: dataForm
-            });
-
-            let result = await response.json();
-
-            if(result.error) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'No se pudo eliminar el producto',
-                    text: result.mensaje
-                }); 
-                return;
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "Esta acción es permanente, por favor tenga cuidado.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then(async (resp) => {
+            if (resp.isConfirmed) {
+                try {
+                    let response = await fetch('./api/producto.php', {
+                        method: 'POST',
+                        body: dataForm
+                    });
+        
+                    let result = await response.json();
+        
+                    if(result.error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se pudo eliminar el producto',
+                            text: result.mensaje
+                        }); 
+                        return;
+                    }
+        
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Producto eliminado',
+                        text: result.mensaje
+                    });
+        
+                    formElement.reset();
+                } catch (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ha ocurrido un error',
+                        text: 'Verifica la conexión con la base de datos y vuelve a intentar.',
+                    });
+                }     
             }
-
-            Swal.fire({
-                icon: 'success',
-                title: 'Producto eliminado',
-                text: result.mensaje
-            });
-
-            formElement.reset();
-        } catch (error) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Ha ocurrido un error',
-                text: 'Verifica la conexión con la base de datos y vuelve a intentar.',
-            });
-        }
+        });
     }
 
     showProductoHTML(data) {
@@ -165,16 +179,20 @@ export default class Producto {
             <div class="card-body">
                 <h5 class="card-title">${nombre_prod}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Código: ${codigo_prod}</h6>
-                <p class="card-text"><strong>Marca del producto:</strong> ${marca_prod}</p>
-                <p class="card-text"><strong>Cantidad comprada:</strong> ${cantidad_comprada_prod} unidades</p>
-                <p class="card-text"><strong>Precio de compra:</strong> $${precio_compra_prod}</p>
+                <p class="card-text"><small><strong>Marca del producto:</strong> ${marca_prod}</small></p>
+                <p class="card-text"><small><strong>Cantidad comprada:</strong> ${cantidad_comprada_prod} unidades</small></p>
+                <p class="card-text"><small><strong>Precio de compra:</strong> $${precio_compra_prod}</small></p>
             </div>
         `;
 
+        this.clearResultado();
+        
+        infoProdContainer.appendChild(card);
+    }
+
+    clearResultado() {
         while(infoProdContainer.firstChild) {
             infoProdContainer.removeChild(infoProdContainer.firstChild);
         }
-        
-        infoProdContainer.appendChild(card);
     }
 }
