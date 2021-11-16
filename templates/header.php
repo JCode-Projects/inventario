@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="build/css/styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-light navbar-expand-md bounce animated navigation-clean">
+    <nav class="navbar navbar-light navbar-expand-md bounce animated navigation-clean" style="z-index: 5;">
         <div class="container">
             <a class="navbar-brand" href="/" style="font-family: Allan, serif;color: var(--bs-info);font-size: 28px;">PC Electronics</a>
             <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
@@ -28,8 +28,8 @@
                         <div class="dropdown-menu">
                             <a id="create-db" class="dropdown-item" href="./api/config/crear_db.php">Crear Base de Datos</a>
                             <a id="create-table" class="dropdown-item" href="./api/config/crear_tabla.php">Crear Tabla</a>
-                            <a class="dropdown-item" href="">Generar Reporte PDF</a>
-                            <a class="dropdown-item" href="">Generar Backup</a>
+                            <a id="create-pdf" class="dropdown-item" href="./api/config/crear_pdf.php">Generar Reporte PDF</a>
+                            <a id="create-backup" class="dropdown-item" href="./api/config/backup.php">Generar Backup</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

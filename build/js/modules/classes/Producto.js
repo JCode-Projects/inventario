@@ -1,4 +1,18 @@
-import { infoProdContainer, formData, formElement, txtCodigoProd, txtNombreProd, txtMarcaProd, txtPrecioCompraProd, txtCantidadCompradaProd, txtMetodo, txtCodigoProdItem, txtMetodoItem } from '../selectors.js'
+import { 
+    infoProdContainer, 
+    formData, 
+    formElement, 
+    txtCodigoProd, 
+    txtNombreProd, 
+    txtMarcaProd, 
+    txtPrecioCompraProd, 
+    txtCantidadCompradaProd, 
+    txtMetodo, 
+    txtCodigoProdItem, 
+    txtMetodoItem,
+    labelTextUpdate,
+    btnSubmitProducto
+} from '../selectors.js'
 export default class Producto {
     constructor() {
         if(formData) {
@@ -9,8 +23,16 @@ export default class Producto {
     
                 if(data.metodo == 'POST') {
                     this.insertProducto(data);
+                } else if(data.metodo == 'PUT') {
+                    this.updateProducto(data);
                 }
             });
+
+            if(txtMetodo.value == 'PUT') {
+                txtCodigoProd.addEventListener('input', e => {
+                    this.validarExistenciaActualizar(e.target.value.trim());
+                });
+            }
         } else if(formElement) {
             formElement.addEventListener('submit', e => {
                 e.preventDefault()
@@ -24,6 +46,112 @@ export default class Producto {
                 }
             });
         }
+    }
+
+    async updateProducto(data) {
+        let dataForm = new FormData();
+        Object.keys(data).forEach(key => {
+            dataForm.append(key, data[key]);
+        });
+
+        try {
+            const result = await fetch('./api/producto.php', {
+                method: 'POST',
+                body: dataForm
+            });
+
+            const info = await result.json();
+
+            console.log(info);
+            
+            if(info.error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Se ha producido un error',
+                    text: info.mensaje
+                });
+                return;
+            }
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Producto actualizado',
+                text: info.mensaje
+            });
+
+            this.deshabilitarCamposFormulario();
+            formData.reset();
+        } catch(error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Ha ocurrido un error',
+                text: 'Verifica la conexión con la base de datos y vuelve a intentar.',
+            });
+        }
+    }
+
+    async validarExistenciaActualizar(cod) {
+        if(!cod) {
+            labelTextUpdate.classList.remove('d-none');
+            labelTextUpdate.innerText = 'Dijite el código del producto a actualizar.';
+            this.deshabilitarCamposFormulario();
+            return;
+        } 
+        
+        labelTextUpdate.classList.add('d-none');
+
+        let data = new FormData();
+        data.append('codigo_prod', cod);
+        data.append('metodo', 'GET');
+
+        try {
+            const result = await fetch('./api/producto.php', {
+                method: 'POST',
+                body: data
+            });
+
+            const info = await result.json();
+
+            if(info.error) {
+                labelTextUpdate.classList.remove('d-none');
+                labelTextUpdate.innerText = info.mensaje;
+                this.deshabilitarCamposFormulario();
+                return;
+            }
+
+            this.habilitarCamposFormulario();
+            this.llenarCamposFormulario(info.info);
+        } catch(error) {
+            labelTextUpdate.classList.remove('d-none');
+            labelTextUpdate.innerText = 'Ha ocurrido un error, revisa la configuración con la base de datos.';
+        }
+    }
+
+    habilitarCamposFormulario() {
+        txtNombreProd.disabled = false;
+        txtMarcaProd.disabled = false;
+        txtPrecioCompraProd.disabled = false;
+        txtCantidadCompradaProd.disabled = false;
+        btnSubmitProducto.disabled = false;
+    }
+
+    deshabilitarCamposFormulario() {
+        txtNombreProd.disabled = true;
+        txtNombreProd.value = '';
+        txtMarcaProd.disabled = true;
+        txtMarcaProd.value = '';
+        txtPrecioCompraProd.disabled = true;
+        txtPrecioCompraProd.value = '';
+        txtCantidadCompradaProd.disabled = true;
+        txtCantidadCompradaProd.value = '';
+        btnSubmitProducto.disabled = true;
+    }
+
+    llenarCamposFormulario(data) {
+        txtNombreProd.value = data.nombre_prod;
+        txtMarcaProd.value = data.marca_prod;
+        txtPrecioCompraProd.value = data.precio_compra_prod;
+        txtCantidadCompradaProd.value = data.cantidad_comprada_prod;
     }
 
     dataProducto() {

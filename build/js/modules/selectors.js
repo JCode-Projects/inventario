@@ -14,6 +14,8 @@ export const finalStateSelect = document.querySelector('#final-state');
 
 export const createDBLink = document.querySelector('#create-db');
 export const createTableLink = document.querySelector('#create-table');
+export const createBackupLink = document.querySelector('#create-backup');
+export const createPdfLink = document.querySelector('#create-pdf');
 
 export const formData = document.querySelector('#form-data');
 export const txtCodigoProd = formData ? formData.querySelector('input[name="codigo_prod"]') : undefined;
@@ -28,3 +30,6 @@ export const txtCodigoProdItem = formElement ? formElement.querySelector('input[
 export const txtMetodoItem = formElement ? formElement.querySelector('input[name="metodo"]') : undefined;
 
 export const infoProdContainer = document.querySelector('#info-prod');
+
+export const labelTextUpdate = document.querySelector('#codigo-update');
+export const btnSubmitProducto = document.querySelector('#submit-producto');

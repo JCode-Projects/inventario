@@ -81,7 +81,28 @@
                 'error' => false,
                 'mensaje' => "El producto con el código '$codigo_prod' fué agregado correctamente."
             )));
+        
+        } else if($metodo == 'PUT') {
+            $db = getConnectionDB();
 
+            $stmt = $db -> prepare("UPDATE tabla45 SET nombre_prod = ?, marca_prod = ?, precio_compra_prod = ?, cantidad_comprada_prod = ? WHERE codigo_prod = ?;");
+
+            $stmt -> bind_param('ssdii', $nombre_prod, $marca_prod, $precio_compra_prod, $cantidad_comprada_prod, $codigo_prod);
+
+            $result = $stmt -> execute();
+
+            if(!$result){
+                die(json_encode(array(
+                    'error' => true,
+                    'mensaje' => "No se pudo actualizar el producto con el código '$codigo_prod'."
+                )));
+            }
+
+            die(json_encode(array(
+                'error' => false,
+                'mensaje' => "El producto con el código '$codigo_prod' fué actualizado correctamente."
+            )));
+            
         } else if($metodo == 'DELETE') {
             $db = getConnectionDB();
 

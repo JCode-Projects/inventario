@@ -1,5 +1,6 @@
 <?php
     require_once __DIR__ . '/conexion.php';
+    require_once __DIR__ . '/credenciales.php';
     
     function crearTabla() {
         
@@ -14,7 +15,7 @@
 
         $db = getConnectionDB();
 
-        $nombre_tabla = 'tabla45';
+        $nombre_tabla = DB_TABLE;
 
         $sql = "CREATE TABLE `$nombre_tabla` (
             `id_prod` int(11) NOT NULL AUTO_INCREMENT,
